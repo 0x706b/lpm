@@ -1,0 +1,6 @@
+semver
+  type: git
+  location: git://github.com/brendanhay/semver.git
+
+packages: ./lpm.cabal
+

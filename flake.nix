@@ -17,6 +17,9 @@
     in rec {
       project = devTools: compiler.developPackage {
         root = ./.;
+        overrides = self: super: {
+          semver = self.callPackage ./semver.nix {};
+        };
         modifier = drv: addBuildTools drv (buildTools ++ devTools);
         returnShellEnv = !(devTools == [ ]);
       };
@@ -24,8 +27,8 @@
       packages.default = project [ ];
 
       devShell = project (with compiler;
-        buildTools ++
         [ haskell-language-server
+         cabal2nix
         ]
       );
     }

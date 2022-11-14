@@ -26,4 +26,8 @@ executable lpm
     , text
     , mtl
     , transformers
+    , attoparsec
+    , deepseq
+    , hashable
+    , semver >=0.4.0.1
   default-language: Haskell2010

@@ -13,11 +13,12 @@ import GHC.Base (IO)
 import LPM.DependencyTree (DependencyTree, buildDependencyTree)
 import LPM.Info (PackageInfo, getPackageInfo)
 import System.IO (getLine, print)
+import Data.Maybe
 
 program :: (MonadError String m, MonadIO m, MonadState (Map String PackageInfo) m) => m DependencyTree
 program = do
   packageName <- liftIO getLine
-  getPackageInfo packageName >>= buildDependencyTree
+  getPackageInfo packageName >>= buildDependencyTree Nothing
 
 main :: IO ()
 main = do
